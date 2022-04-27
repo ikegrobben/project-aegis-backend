@@ -75,8 +75,14 @@ public class UsersController {
             }
             return new ResponseEntity<>(sb.toString(), HttpStatus.BAD_REQUEST);
         }
-        service.createUser(usersDto);
-        return new ResponseEntity<>("New user created", HttpStatus.CREATED);
+        if(usersDto.getUsername().equals(service.getUser(usersDto.getUsername()).getUsername())) {
+            return new ResponseEntity<>("That username already exists", HttpStatus.CONFLICT);
+        }
+        else {
+            service.createUser(usersDto);
+            return new ResponseEntity<>("New user created", HttpStatus.CREATED);
+
+        }
     }
 
     // Deactivate user

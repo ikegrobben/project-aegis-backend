@@ -60,7 +60,6 @@ public class ReportItemController {
         } else {
             reportService.createReports();
             long reportId = reportService.checkLastReport().getId();
-            System.out.println(reportId);
             service.createReportItem(reportItem, reportId);
             return new ResponseEntity<>("Created new report, added report item", HttpStatus.CREATED);
 

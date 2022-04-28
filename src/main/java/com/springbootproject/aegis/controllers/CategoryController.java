@@ -28,10 +28,4 @@ public class CategoryController {
         List<CategoryDto> categoryList = service.getCategories();
         return new ResponseEntity<>(categoryList, HttpStatus.OK);
     }
-
-    @GetMapping("/categories/{month}")
-    public ResponseEntity<Object> getCategoriesByMonth(@PathVariable(name = "month") String monthName) {
-        List<CategoryDto> categoryMonthList = service.getCategoriesByMonth(monthName);
-        return new ResponseEntity<>(categoryMonthList, HttpStatus.OK);
-    }
 }

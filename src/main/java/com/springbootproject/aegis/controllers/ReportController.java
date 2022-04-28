@@ -31,6 +31,14 @@ public class ReportController {
         return new ResponseEntity<>(reportsList, HttpStatus.OK);
     }
 
+    // Get all reports from a month.
+    // Future usage for getting a overview of all reports in a single month.
+    @GetMapping("/reports/{month}")
+    public ResponseEntity<Object> getMonthReport(@PathVariable(name = "month") String monthName) {
+        List<ReportDto> reportsList = service.getMonthReport(monthName);
+        return new ResponseEntity<>(reportsList, HttpStatus.OK);
+    }
+
     // Get Report
     @GetMapping("/report/{id}")
     public ResponseEntity<Object> getReport(@PathVariable(name = "id") Long id) {
@@ -39,17 +47,9 @@ public class ReportController {
     }
 
     // Get last Report
-    @GetMapping("/report/last")
+    @GetMapping("/report/last-report")
     public ResponseEntity<Object> getLastReport() {
         List<ReportDto> report = service.getLastReport();
         return new ResponseEntity<>(report, HttpStatus.OK);
     }
-
-    // Get all reports from a month.
-    @GetMapping("/reports/{month}")
-    public ResponseEntity<Object> getMonthReport(@PathVariable(name = "month") String monthName) {
-        List<ReportDto> reportsList = service.getMonthReport(monthName);
-        return new ResponseEntity<>(reportsList, HttpStatus.OK);
-    }
-
 }

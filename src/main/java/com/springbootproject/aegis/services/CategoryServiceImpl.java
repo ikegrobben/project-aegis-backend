@@ -25,13 +25,4 @@ public class CategoryServiceImpl implements CategoryService{
         lc.forEach(c -> categories.add(new CategoryDto(c.getId(), c.getName(), c.getReportItem())));
         return categories;
     }
-
-    @Override
-    public List<CategoryDto> getCategoriesByMonth(String monthName) {
-        List<Category> lc = this.repository.findAll();
-        List<CategoryDto> categories = new ArrayList<>();
-
-        lc.forEach(c -> categories.add(new CategoryDto(c.getId(), c.getName(), c.getReportItem())));
-        return categories;
-    }
 }

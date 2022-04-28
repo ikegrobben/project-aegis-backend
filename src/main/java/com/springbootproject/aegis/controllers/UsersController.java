@@ -58,10 +58,25 @@ public class UsersController {
         return new ResponseEntity<>(usersList, HttpStatus.OK);
     }
 
-    @GetMapping("/users/{name}")
+    // Get user by name
+    @GetMapping("/user/{name}")
     public ResponseEntity<Object> getUsers(@PathVariable(name = "name") String name) {
         Users users = service.getUser(name);
         return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    // Deactivate user
+    @PutMapping("/user/{id}/active-state-change")
+    public ResponseEntity<Object> deactivateUser(@PathVariable("id") Long id) {
+        service.deactivateUser(id);
+        return new ResponseEntity<>("User with id: " + id + " has been deactivated", HttpStatus.OK);
+    }
+
+    // Change password
+    @PutMapping("/user/{id}/password")
+    public ResponseEntity<Object> updatePassword(@PathVariable Long id, @RequestBody ChangePassword changePassword) {
+        service.updatePassword(changePassword, id);
+        return new ResponseEntity<>("password changed", HttpStatus.OK);
     }
 
      // Create new user
@@ -85,17 +100,6 @@ public class UsersController {
         }
     }
 
-    // Deactivate user
-    @DeleteMapping("/users/{id}/deactivate")
-    public ResponseEntity<Object> deactivateUser(@PathVariable("id") Long id) {
-        service.deactivateUser(id);
-        return new ResponseEntity<>("User with id: " + id + " has been deactivated", HttpStatus.OK);
-    }
 
-    @PutMapping("/users/{id}/password")
-    public ResponseEntity<Object> updatePassword(@PathVariable Long id, @RequestBody ChangePassword changePassword) {
-        service.updatePassword(changePassword, id);
-        return new ResponseEntity<>("password changed", HttpStatus.OK);
-    }
 
 }

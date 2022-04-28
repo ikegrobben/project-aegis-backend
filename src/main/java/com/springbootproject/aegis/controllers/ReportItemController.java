@@ -30,15 +30,6 @@ public class ReportItemController {
     @Autowired
     private ReportService reportService;
 
-    // Get report item
-    @GetMapping("/report-item/{id}")
-    public ResponseEntity<Object> getReportItem(@PathVariable(name = "id") Long reportItemId) {
-        ReportItem reportItem = service.getReportItem(reportItemId);
-        return new ResponseEntity<>(reportItem, HttpStatus.OK);
-    }
-
-
-
     // Post report item
     @PostMapping("/report-item")
     public ResponseEntity<Object> createReportItem(@Valid @RequestBody ReportItemDto reportItem, BindingResult br) throws IOException {
@@ -66,12 +57,27 @@ public class ReportItemController {
         }
     }
 
+    // Get report item
+    @GetMapping("/report-item/{id}")
+    public ResponseEntity<Object> getReportItem(@PathVariable(name = "id") Long reportItemId) {
+        ReportItem reportItem = service.getReportItem(reportItemId);
+        return new ResponseEntity<>(reportItem, HttpStatus.OK);
+    }
+
+
     // Edit report item
     @PutMapping("report-item/{id}")
     public ResponseEntity<Object> updateReportItem(@PathVariable Long id, @RequestBody ReportItemDto reportItemDto) {
         service.updateReportItem(reportItemDto, id);
 
         return new ResponseEntity<>("Report item updated.", HttpStatus.OK);
+    }
+
+    // Delete post
+    @DeleteMapping("/report-item/{id}/delete")
+    public ResponseEntity<Object> deletePost(@PathVariable("id") Long id) {
+        service.deleteReportItem(id);
+        return new ResponseEntity<>("Report item " + id + " has been deleted", HttpStatus.OK);
     }
 
      //get all open status
@@ -93,13 +99,6 @@ public class ReportItemController {
     public ResponseEntity<Object> getMonthReports(@PathVariable(name = "month") String monthName) {
         List<ReportItemDto> reportsList = service.getMonthReports(monthName);
         return new ResponseEntity<>(reportsList, HttpStatus.OK);
-    }
-
-    // Delete post
-    @DeleteMapping("/report-item/{id}/delete")
-    public ResponseEntity<Object> deletePost(@PathVariable("id") Long id) {
-        service.deleteReportItem(id);
-        return new ResponseEntity<>("Report item " + id + " has been deleted", HttpStatus.OK);
     }
 }
 

@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface CategoryService {
     public List<CategoryDto> getCategories();
-    List<CategoryDto> getCategoriesByMonth(String monthName);
 }

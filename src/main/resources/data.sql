@@ -31,8 +31,12 @@ VALUES
 
 INSERT INTO users(id, username, firstname, lastname, password, role, enabled, job_id)
 VALUES
-    (1, 'Ike', 'Ike', 'Grobben', '$2a$12$sxL/FAPcdpOJWhycFug/Zu8ZSqKvus9B0Nvp2lNgocUUj/5xtx7Oq', 'ADMIN', 1, 1), -- test
-    (2, 'BartSimpson', 'Bart', 'Simpson', '$2a$12$ffHSiphf4qciDLfBu/NYZOdqqxwjo.DEeIy4qTbba7xu/YK9HeCSq', 'USER', 1, 3); -- bart
+    (1, 'Ike', 'Ike', 'Grobben', '$2a$12$sxL/FAPcdpOJWhycFug/Zu8ZSqKvus9B0Nvp2lNgocUUj/5xtx7Oq', 'ADMIN', 1, 1),
+    (2, 'Sam', 'Sam', 'Barnhoorn', '$2a$12$c6H3DopaQN8HRtGQ8DJU5eVwdtez4HnBUzGJTCHZZiMMsDSVI2kYe', 'ADMIN', 1, 2),
+    (3, 'Johan', 'Johan', 'van Oosten', '$2a$12$TDHg0AIXKXQFQjliurOE6uFi742LVjVXttPgDCGEpJFdwnZ9.SfuW', 'ADMIN', 0, 2),
+    (4, 'Nova', 'Nova', 'Eeken', '$2a$12$bIXrztIKJ1QE7eT5xohhC.pV5bvVdGdLcFjAFgsqfYslzSPQwkITW', 'USER', 1, 3),
+    (5, 'Robertjan', 'Robert-jan', 'Elias', '$2a$12$0jHdoH0KWKlkGFZ6O783YekAzLoRsr5CVv1e1GhRDpAhretnd2rx.', 'USER', 1, 3),
+    (6, 'Keanu', 'Keanu', 'Grobben', '$2a$12$Ud1gGeho69G38u6i0NjjReJvzRfL/o24mY1eyhA759sksS51/i2i.', 'ADMIN', 0, 2);
 
 /* Add report items */
 /* Need to add locations, Users & Images */

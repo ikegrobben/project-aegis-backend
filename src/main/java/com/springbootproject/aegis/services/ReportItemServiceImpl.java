@@ -62,7 +62,9 @@ public class ReportItemServiceImpl implements ReportItemService {
             reportItem.setStatus(reportItemDto.getStatus());
             reportItem.setCategory(reportItemDto.getCategory());
             reportItem.setLocation(reportItemDto.getLocation());
-            reportItem.setImage(reportItemDto.getImage());
+            if(reportItemDto.getImage() != null) {
+                reportItem.setImage(reportItemDto.getImage());
+            }
         return this.repository.save(reportItem);
         }).orElseThrow(() -> new ResourceNotFoundException("Post not found : " + id));
     }

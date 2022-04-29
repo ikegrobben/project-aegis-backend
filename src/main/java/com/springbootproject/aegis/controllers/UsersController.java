@@ -90,7 +90,7 @@ public class UsersController {
             }
             return new ResponseEntity<>(sb.toString(), HttpStatus.BAD_REQUEST);
         }
-        if(usersDto.getUsername().equals(service.getUser(usersDto.getUsername()).getUsername())) {
+        if(usersDto.getUsername().equals(service.getUser(usersDto.getUsername()).getUsername()) && service.getUser(usersDto.getUsername()).getUsername() != null) {
             return new ResponseEntity<>("That username already exists", HttpStatus.CONFLICT);
         }
         else {

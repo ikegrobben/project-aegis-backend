@@ -48,7 +48,13 @@ public class UsersServiceImpl implements UsersService{
 
     @Override
     public Users getUser(String name) {
-        return repository.findByUsername(name);
+        Users username = repository.findByUsername(name);
+        Users notFound = new Users();
+        if(username != null) {
+            return username;
+        } else {
+            return notFound;
+        }
     }
 
     @Override

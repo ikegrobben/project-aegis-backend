@@ -51,7 +51,7 @@ public class UsersController {
                 .body("Bearer " + token);
     }
 
-     // Get report item
+     // Get all users
     @GetMapping("/users")
     public ResponseEntity<Object> getUsers() {
         List<UsersDto> usersList = service.getUsers();
